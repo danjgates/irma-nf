@@ -1,0 +1,16 @@
+nextflow_pipeline {
+
+  name "Test irma"
+  script "danjgates/irma-nf"
+
+  test("irma should generate an output folder on completion") {
+    expect {
+      with(workflow) {
+        assert success
+        assert trace.tasks().size() == 1
+
+      }
+    }
+  }
+
+}
